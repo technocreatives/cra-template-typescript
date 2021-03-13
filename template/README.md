@@ -2,6 +2,36 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Adding Storybook
+
+It is recommended to use Storybook for your projects.
+
+```bash
+npx sb init
+npm run storybook
+```
+
+## Adding GraphQL support
+
+```bash
+npm i urql graphql graphql-tag
+npm i @graphql-codegen/{cli,introspection,typescript,typescript-operations,typescript-urql}
+```
+
+Create a `codegen.yml` file in your project root with the following content:
+
+```yaml
+overwrite: true
+schema: # <path to your schema>
+documents: "src/**/*.graphql"
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-urql"
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
